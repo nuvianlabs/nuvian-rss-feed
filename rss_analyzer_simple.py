@@ -12,10 +12,27 @@ class RSSAnalyzer:
         if not articles:
             return []
         
+        # Remove duplicates before analysis
+        unique_articles = []
+        seen_urls = set()
+        seen_titles = set()
+        
+        for article in articles:
+            article_url = article.get('link', '').strip()
+            article_title = article.get('title', '').strip()
+            
+            # Skip if we've seen this URL or title before
+            if article_url in seen_urls or article_title in seen_titles:
+                continue
+            
+            seen_urls.add(article_url)
+            seen_titles.add(article_title)
+            unique_articles.append(article)
+        
         # Score articles based on multiple criteria
         scored_articles = []
         
-        for article in articles:
+        for article in unique_articles:
             score = self._calculate_relevance_score(
                 article, industry, relevance_criteria
             )

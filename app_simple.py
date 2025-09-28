@@ -55,6 +55,9 @@ def analyze_feeds():
     
     # Parse feeds and get articles
     articles = []
+    seen_urls = set()  # Track URLs to prevent duplicates
+    seen_titles = set()  # Track titles to prevent duplicates
+    
     for feed_url in feed_urls:
         try:
             # Simple RSS parsing using requests
@@ -62,7 +65,22 @@ def analyze_feeds():
             if response.status_code == 200:
                 # Basic XML parsing to extract articles
                 content = response.text
-                articles.extend(parse_rss_content(content, feed_url))
+                feed_articles = parse_rss_content(content, feed_url)
+                
+                # Filter out duplicates
+                for article in feed_articles:
+                    article_url = article.get('link', '').strip()
+                    article_title = article.get('title', '').strip()
+                    
+                    # Skip if we've seen this URL or title before
+                    if article_url in seen_urls or article_title in seen_titles:
+                        continue
+                    
+                    # Add to seen sets and articles list
+                    seen_urls.add(article_url)
+                    seen_titles.add(article_title)
+                    articles.append(article)
+                    
         except Exception as e:
             print(f"Error parsing feed {feed_url}: {e}")
     
