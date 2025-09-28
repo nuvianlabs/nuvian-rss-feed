@@ -6,8 +6,6 @@ import re
 class RSSAnalyzer:
     def __init__(self):
         self.openai_api_key = os.getenv('OPENAI_API_KEY')
-        if self.openai_api_key:
-            openai.api_key = self.openai_api_key
     
     def analyze_articles(self, articles, industry, relevance_criteria):
         """Analyze articles and return scored results"""
@@ -191,14 +189,32 @@ class RSSAnalyzer:
             3. Why this article matters
             """
             
-            client = openai.OpenAI(api_key=self.openai_api_key)
-            response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=150,
-                temperature=0.7
+            # Use requests directly to avoid httpx compatibility issues
+            import requests
+            
+            headers = {
+                "Authorization": f"Bearer {self.openai_api_key}",
+                "Content-Type": "application/json"
+            }
+            
+            data = {
+                "model": "gpt-3.5-turbo",
+                "messages": [{"role": "user", "content": prompt}],
+                "max_tokens": 150,
+                "temperature": 0.7
+            }
+            
+            response = requests.post(
+                "https://api.openai.com/v1/chat/completions",
+                headers=headers,
+                json=data,
+                timeout=30
             )
             
-            return response.choices[0].message.content.strip()
+            if response.status_code == 200:
+                result = response.json()
+                return result['choices'][0]['message']['content'].strip()
+            else:
+                return f"AI analysis error: HTTP {response.status_code} - {response.text}"
         except Exception as e:
             return f"AI analysis error: {str(e)}"
