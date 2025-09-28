@@ -110,31 +110,49 @@ def parse_rss_content(content, feed_url):
                 # Clean and extract title
                 title = clean_html(title_match.group(1)).strip()
                 
-                # Clean and extract summary/description
-                summary = ''
-                if desc_match:
-                    raw_summary = desc_match.group(1)
-                    # Remove HTML tags and clean up
-                    summary = clean_html(raw_summary).strip()
-                    # Limit summary length
+            # Clean and extract summary/description
+            summary = ''
+            if desc_match:
+                raw_summary = desc_match.group(1)
+                # Remove HTML tags and clean up
+                summary = clean_html(raw_summary).strip()
+                # Limit summary length
+                if len(summary) > 300:
+                    summary = summary[:300] + '...'
+            
+            # If no summary from description, try to extract from content or other fields
+            if not summary:
+                # Look for content field
+                content_match = re.search(r'<content:encoded>(.*?)</content:encoded>', item, re.DOTALL)
+                if content_match:
+                    raw_content = content_match.group(1)
+                    summary = clean_html(raw_content).strip()
                     if len(summary) > 300:
                         summary = summary[:300] + '...'
                 
-                # Clean link
-                link = clean_html(link_match.group(1)).strip()
-                
-                # Clean published date
-                published = clean_html(pub_match.group(1)).strip() if pub_match else ''
-                
-                article = {
-                    'title': title,
-                    'link': link,
-                    'summary': summary,
-                    'published': published,
-                    'source': 'RSS Feed',
-                    'feed_url': feed_url
-                }
-                articles.append(article)
+                # If still no summary, use title as fallback
+                if not summary:
+                    summary = f"Article: {title}"
+            
+            # Final fallback - if still no summary, create one from title
+            if not summary or summary.strip() == '':
+                summary = f"Read more about: {title}"
+            
+            # Clean link
+            link = clean_html(link_match.group(1)).strip()
+            
+            # Clean published date
+            published = clean_html(pub_match.group(1)).strip() if pub_match else ''
+            
+            article = {
+                'title': title,
+                'link': link,
+                'summary': summary,
+                'published': published,
+                'source': 'RSS Feed',
+                'feed_url': feed_url
+            }
+            articles.append(article)
     except Exception as e:
         print(f"Error parsing RSS content: {e}")
     
