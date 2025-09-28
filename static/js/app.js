@@ -256,13 +256,13 @@ class RSSAnalyzerApp {
                 <div class="article-title">
                     <a href="${article.link}" target="_blank">${article.title}</a>
                 </div>
-                <div class="article-summary">${article.summary}</div>
+                <div class="article-summary">${article.summary || 'No summary available'}</div>
                 <div class="article-meta">
                     <strong>Source:</strong> ${article.source} | 
                     <strong>Published:</strong> ${article.published} |
                     <span class="relevance-score ${scoreClass}">Relevance: ${score.toFixed(1)}%</span>
                 </div>
-                ${article.analysis ? `<div class="article-analysis"><strong>AI Analysis:</strong> ${article.analysis}</div>` : ''}
+                ${article.analysis && !article.analysis.includes('AI analysis error') ? `<div class="article-analysis"><strong>AI Analysis:</strong> ${article.analysis}</div>` : ''}
             `;
             container.appendChild(articleDiv);
         });
