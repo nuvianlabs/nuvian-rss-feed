@@ -5,65 +5,65 @@ import time
 
 class IndustryFeedManager:
     def __init__(self):
-        # AI-focused RSS feeds
+        # AI-focused RSS feeds with unique sources
         self.industry_feeds = {
             'ai': [
-                'https://feeds.feedburner.com/oreilly/radar',
                 'https://techcrunch.com/feed/',
-                'https://feeds.feedburner.com/venturebeat/SZYF',
                 'https://www.wired.com/feed/rss',
                 'https://feeds.arstechnica.com/arstechnica/index/',
+                'https://feeds.feedburner.com/venturebeat/SZYF',
+                'https://feeds.feedburner.com/TechCrunch/',
+                'https://www.theverge.com/rss/index.xml',
                 'https://feeds.feedburner.com/oreilly/radar',
                 'https://feeds.feedburner.com/techcrunch/startups',
-                'https://feeds.feedburner.com/TechCrunch/',
                 'https://feeds.feedburner.com/venturebeat/SZYF',
                 'https://feeds.feedburner.com/oreilly/radar'
             ],
             'ai-models': [
-                'https://feeds.feedburner.com/oreilly/radar',
                 'https://techcrunch.com/feed/',
-                'https://feeds.feedburner.com/venturebeat/SZYF',
                 'https://www.wired.com/feed/rss',
                 'https://feeds.arstechnica.com/arstechnica/index/',
+                'https://feeds.feedburner.com/venturebeat/SZYF',
+                'https://feeds.feedburner.com/TechCrunch/',
+                'https://www.theverge.com/rss/index.xml',
                 'https://feeds.feedburner.com/oreilly/radar',
                 'https://feeds.feedburner.com/techcrunch/startups',
-                'https://feeds.feedburner.com/TechCrunch/',
                 'https://feeds.feedburner.com/venturebeat/SZYF',
                 'https://feeds.feedburner.com/oreilly/radar'
             ],
             'machine-learning': [
-                'https://feeds.feedburner.com/oreilly/radar',
                 'https://techcrunch.com/feed/',
-                'https://feeds.feedburner.com/venturebeat/SZYF',
                 'https://www.wired.com/feed/rss',
                 'https://feeds.arstechnica.com/arstechnica/index/',
+                'https://feeds.feedburner.com/venturebeat/SZYF',
+                'https://feeds.feedburner.com/TechCrunch/',
+                'https://www.theverge.com/rss/index.xml',
                 'https://feeds.feedburner.com/oreilly/radar',
                 'https://feeds.feedburner.com/techcrunch/startups',
-                'https://feeds.feedburner.com/TechCrunch/',
                 'https://feeds.feedburner.com/venturebeat/SZYF',
                 'https://feeds.feedburner.com/oreilly/radar'
             ],
             'ai-research': [
-                'https://feeds.feedburner.com/oreilly/radar',
                 'https://techcrunch.com/feed/',
-                'https://feeds.feedburner.com/venturebeat/SZYF',
                 'https://www.wired.com/feed/rss',
                 'https://feeds.arstechnica.com/arstechnica/index/',
+                'https://feeds.feedburner.com/venturebeat/SZYF',
+                'https://feeds.feedburner.com/TechCrunch/',
+                'https://www.theverge.com/rss/index.xml',
                 'https://feeds.feedburner.com/oreilly/radar',
                 'https://feeds.feedburner.com/techcrunch/startups',
-                'https://feeds.feedburner.com/TechCrunch/',
                 'https://feeds.feedburner.com/venturebeat/SZYF',
                 'https://feeds.feedburner.com/oreilly/radar'
             ],
             'ai-news': [
-                'https://feeds.feedburner.com/oreilly/radar',
                 'https://techcrunch.com/feed/',
-                'https://feeds.feedburner.com/venturebeat/SZYF',
                 'https://www.wired.com/feed/rss',
                 'https://feeds.arstechnica.com/arstechnica/index/',
+                'https://feeds.feedburner.com/venturebeat/SZYF',
+                'https://feeds.feedburner.com/TechCrunch/',
+                'https://www.theverge.com/rss/index.xml',
                 'https://feeds.feedburner.com/oreilly/radar',
                 'https://feeds.feedburner.com/techcrunch/startups',
-                'https://feeds.feedburner.com/TechCrunch/',
                 'https://feeds.feedburner.com/venturebeat/SZYF',
                 'https://feeds.feedburner.com/oreilly/radar'
             ]
@@ -159,18 +159,18 @@ class IndustryFeedManager:
         # Common RSS feed URLs for different industries
         common_feeds = {
             'ai': [
-                'https://feeds.feedburner.com/oreilly/radar',
                 'https://techcrunch.com/feed/',
                 'https://www.wired.com/feed/rss',
                 'https://feeds.arstechnica.com/arstechnica/index/',
-                'https://feeds.feedburner.com/techcrunch/startups'
+                'https://feeds.feedburner.com/venturebeat/SZYF',
+                'https://feeds.feedburner.com/TechCrunch/'
             ],
             'ai-models': [
-                'https://feeds.feedburner.com/oreilly/radar',
                 'https://techcrunch.com/feed/',
                 'https://www.wired.com/feed/rss',
                 'https://feeds.arstechnica.com/arstechnica/index/',
-                'https://feeds.feedburner.com/techcrunch/startups'
+                'https://feeds.feedburner.com/venturebeat/SZYF',
+                'https://feeds.feedburner.com/TechCrunch/'
             ]
         }
         
