@@ -107,11 +107,30 @@ def parse_rss_content(content, feed_url):
             pub_match = re.search(r'<pubDate>(.*?)</pubDate>', item, re.DOTALL)
             
             if title_match and link_match:
+                # Clean and extract title
+                title = clean_html(title_match.group(1)).strip()
+                
+                # Clean and extract summary/description
+                summary = ''
+                if desc_match:
+                    raw_summary = desc_match.group(1)
+                    # Remove HTML tags and clean up
+                    summary = clean_html(raw_summary).strip()
+                    # Limit summary length
+                    if len(summary) > 300:
+                        summary = summary[:300] + '...'
+                
+                # Clean link
+                link = clean_html(link_match.group(1)).strip()
+                
+                # Clean published date
+                published = clean_html(pub_match.group(1)).strip() if pub_match else ''
+                
                 article = {
-                    'title': clean_html(title_match.group(1)),
-                    'link': clean_html(link_match.group(1)),
-                    'summary': clean_html(desc_match.group(1)) if desc_match else '',
-                    'published': clean_html(pub_match.group(1)) if pub_match else '',
+                    'title': title,
+                    'link': link,
+                    'summary': summary,
+                    'published': published,
                     'source': 'RSS Feed',
                     'feed_url': feed_url
                 }
@@ -125,10 +144,21 @@ def clean_html(text):
     """Remove HTML tags from text"""
     if not text:
         return ''
+    
     import re
+    import html
+    
     # Remove HTML tags
     clean = re.compile('<.*?>')
-    return re.sub(clean, '', text).strip()
+    text = re.sub(clean, '', text)
+    
+    # Decode HTML entities
+    text = html.unescape(text)
+    
+    # Clean up extra whitespace
+    text = re.sub(r'\s+', ' ', text)
+    
+    return text.strip()
 
 @app.route('/api/integrations/send', methods=['POST'])
 def send_to_integration():
