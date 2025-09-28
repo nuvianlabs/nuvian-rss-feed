@@ -59,14 +59,13 @@ class RSSAnalyzer:
         if not industry:
             return 50.0  # Neutral score if no industry specified
         
-        # Industry keywords mapping
+        # AI-focused keywords mapping
         industry_keywords = {
-            'technology': ['tech', 'software', 'AI', 'machine learning', 'cloud', 'cybersecurity', 'startup', 'innovation'],
-            'finance': ['finance', 'banking', 'investment', 'trading', 'cryptocurrency', 'fintech', 'market', 'economy'],
-            'healthcare': ['health', 'medical', 'pharmaceutical', 'biotech', 'healthcare', 'clinical', 'treatment', 'research'],
-            'marketing': ['marketing', 'advertising', 'brand', 'social media', 'digital', 'content', 'SEO', 'campaign'],
-            'business': ['business', 'corporate', 'management', 'strategy', 'leadership', 'entrepreneurship', 'startup'],
-            'science': ['science', 'research', 'study', 'discovery', 'experiment', 'analysis', 'data', 'findings']
+            'ai': ['AI', 'artificial intelligence', 'machine learning', 'deep learning', 'neural networks', 'GPT', 'LLM', 'transformer', 'model', 'algorithm'],
+            'ai-models': ['model', 'GPT', 'LLM', 'transformer', 'BERT', 'T5', 'PaLM', 'Claude', 'ChatGPT', 'OpenAI', 'Anthropic', 'Google', 'Meta'],
+            'machine-learning': ['machine learning', 'ML', 'deep learning', 'neural networks', 'training', 'inference', 'model', 'algorithm', 'data science'],
+            'ai-research': ['research', 'paper', 'study', 'experiment', 'benchmark', 'evaluation', 'academic', 'conference', 'publication'],
+            'ai-news': ['AI', 'artificial intelligence', 'technology', 'innovation', 'breakthrough', 'announcement', 'release', 'update']
         }
         
         # Get keywords for the industry

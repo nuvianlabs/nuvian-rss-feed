@@ -8,7 +8,7 @@ import json
 import re
 from rss_analyzer_simple import RSSAnalyzer
 from integrations import IntegrationManager
-from industry_feeds_simple import IndustryFeedManager
+from industry_feeds_ai import IndustryFeedManager
 
 # Load environment variables
 load_dotenv()

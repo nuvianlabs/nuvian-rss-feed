@@ -19,7 +19,7 @@ class IndustryFeedManager:
                 'https://feeds.feedburner.com/venturebeat/SZYF',
                 'https://feeds.feedburner.com/oreilly/radar'
             ],
-            'technology': [
+            'ai-models': [
                 'https://feeds.feedburner.com/oreilly/radar',
                 'https://techcrunch.com/feed/',
                 'https://feeds.feedburner.com/venturebeat/SZYF',
@@ -31,45 +31,41 @@ class IndustryFeedManager:
                 'https://feeds.feedburner.com/venturebeat/SZYF',
                 'https://feeds.feedburner.com/oreilly/radar'
             ],
-            'finance': [
-                'https://feeds.finance.yahoo.com/rss/2.0/headline',
-                'https://feeds.bloomberg.com/markets/news.rss',
-                'https://feeds.reuters.com/news/wealth',
-                'https://feeds.feedburner.com/zerohedge/feed',
-                'https://feeds.marketwatch.com/marketwatch/topstories/',
-                'https://feeds.finance.yahoo.com/rss/2.0/headline',
-                'https://feeds.bloomberg.com/markets/news.rss',
-                'https://feeds.reuters.com/news/wealth',
-                'https://feeds.feedburner.com/zerohedge/feed',
-                'https://feeds.marketwatch.com/marketwatch/topstories/'
+            'machine-learning': [
+                'https://feeds.feedburner.com/oreilly/radar',
+                'https://techcrunch.com/feed/',
+                'https://feeds.feedburner.com/venturebeat/SZYF',
+                'https://www.wired.com/feed/rss',
+                'https://feeds.arstechnica.com/arstechnica/index/',
+                'https://feeds.feedburner.com/oreilly/radar',
+                'https://feeds.feedburner.com/techcrunch/startups',
+                'https://feeds.feedburner.com/TechCrunch/',
+                'https://feeds.feedburner.com/venturebeat/SZYF',
+                'https://feeds.feedburner.com/oreilly/radar'
             ],
-            'healthcare': [
-                'https://feeds.feedburner.com/healthcareitnews',
-                'https://www.healthleadersmedia.com/rss.xml',
-                'https://feeds.feedburner.com/HealthcareITNews',
-                'https://www.medscape.com/rss',
-                'https://feeds.feedburner.com/HealthcareITNews'
+            'ai-research': [
+                'https://feeds.feedburner.com/oreilly/radar',
+                'https://techcrunch.com/feed/',
+                'https://feeds.feedburner.com/venturebeat/SZYF',
+                'https://www.wired.com/feed/rss',
+                'https://feeds.arstechnica.com/arstechnica/index/',
+                'https://feeds.feedburner.com/oreilly/radar',
+                'https://feeds.feedburner.com/techcrunch/startups',
+                'https://feeds.feedburner.com/TechCrunch/',
+                'https://feeds.feedburner.com/venturebeat/SZYF',
+                'https://feeds.feedburner.com/oreilly/radar'
             ],
-            'marketing': [
-                'https://feeds.feedburner.com/marketingland',
-                'https://www.marketingprofs.com/rss',
-                'https://feeds.feedburner.com/ContentMarketingInstitute',
-                'https://www.socialmediaexaminer.com/feed/',
-                'https://feeds.feedburner.com/MarketingLand'
-            ],
-            'business': [
-                'https://feeds.feedburner.com/entrepreneur',
-                'https://www.forbes.com/business/feed/',
-                'https://feeds.feedburner.com/IncMagazine',
-                'https://www.fastcompany.com/feed',
-                'https://feeds.feedburner.com/IncMagazine'
-            ],
-            'science': [
-                'https://feeds.nature.com/nature/rss/current',
-                'https://www.scientificamerican.com/rss/',
-                'https://feeds.feedburner.com/ScienceDaily',
-                'https://www.science.org/rss',
-                'https://feeds.feedburner.com/ScienceDaily'
+            'ai-news': [
+                'https://feeds.feedburner.com/oreilly/radar',
+                'https://techcrunch.com/feed/',
+                'https://feeds.feedburner.com/venturebeat/SZYF',
+                'https://www.wired.com/feed/rss',
+                'https://feeds.arstechnica.com/arstechnica/index/',
+                'https://feeds.feedburner.com/oreilly/radar',
+                'https://feeds.feedburner.com/techcrunch/startups',
+                'https://feeds.feedburner.com/TechCrunch/',
+                'https://feeds.feedburner.com/venturebeat/SZYF',
+                'https://feeds.feedburner.com/oreilly/radar'
             ]
         }
         
@@ -162,24 +158,24 @@ class IndustryFeedManager:
         
         # Common RSS feed URLs for different industries
         common_feeds = {
-            'technology': [
+            'ai': [
                 'https://feeds.feedburner.com/oreilly/radar',
                 'https://techcrunch.com/feed/',
                 'https://www.wired.com/feed/rss',
                 'https://feeds.arstechnica.com/arstechnica/index/',
                 'https://feeds.feedburner.com/techcrunch/startups'
             ],
-            'finance': [
-                'https://feeds.finance.yahoo.com/rss/2.0/headline',
-                'https://feeds.bloomberg.com/markets/news.rss',
-                'https://feeds.reuters.com/news/wealth',
-                'https://feeds.feedburner.com/zerohedge/feed',
-                'https://feeds.marketwatch.com/marketwatch/topstories/'
+            'ai-models': [
+                'https://feeds.feedburner.com/oreilly/radar',
+                'https://techcrunch.com/feed/',
+                'https://www.wired.com/feed/rss',
+                'https://feeds.arstechnica.com/arstechnica/index/',
+                'https://feeds.feedburner.com/techcrunch/startups'
             ]
         }
         
         # Return some common feeds as examples
-        return common_feeds.get('technology', [])[:5]
+        return common_feeds.get('ai', [])[:5]
     
     def _is_valid_feed(self, feed_url):
         """Check if a URL is a valid RSS feed"""
